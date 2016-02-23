@@ -1,5 +1,6 @@
 package ru.stga.pft.sandbox;
 
+import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 /**
@@ -29,7 +30,8 @@ public class MytestPoint {
 
     public static double distance(double x1, double x2, double y1, double y2) {
 
-    return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+
 
 
   }
