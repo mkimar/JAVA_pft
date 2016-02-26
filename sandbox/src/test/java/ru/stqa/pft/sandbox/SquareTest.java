@@ -1,5 +1,6 @@
 package ru.stqa.pft.sandbox;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stga.pft.sandbox.Square;
 
@@ -12,7 +13,7 @@ public class SquareTest {
   public void testArea () {
 
     Square s = new Square(7);
-    assert s.area () == 49;
+    Assert.assertEquals(s.area (),49.0);
   }
 
 
