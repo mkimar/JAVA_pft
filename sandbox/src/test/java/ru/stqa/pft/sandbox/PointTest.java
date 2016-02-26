@@ -14,7 +14,7 @@ public class PointTest {
 
     PointP1 p1 = new PointP1(1, 2, 4, 6);
     Assert.assertEquals(p1.distance(), 5.0);
-    
+
   }
 
 }
