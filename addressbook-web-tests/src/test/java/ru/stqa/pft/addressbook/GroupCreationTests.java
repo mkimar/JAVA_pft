@@ -20,28 +20,21 @@ public class GroupCreationTests {
     @BeforeMethod
     public void setUp() throws Exception {
         wd = new FirefoxDriver();
-        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
     }
     
     @Test
     public void GroupCreationTests() {
         wd.get("http://localhost/addressbook/group.php");
         wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).sendKeys("\\undefined");
-        wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).sendKeys("\\undefined");
-        if (!wd.findElement(By.name("pass")).getAttribute("value").equals("secret")) {
-            System.out.println("verifyElementValue failed");
-        }
+        wd.findElement(By.name("user")).clear();
+        wd.findElement(By.name("user")).sendKeys("admin");
         wd.findElement(By.name("pass")).click();
         wd.findElement(By.name("pass")).clear();
         wd.findElement(By.name("pass")).sendKeys("secret");
         wd.findElement(By.cssSelector("input[type=\"submit\"]")).click();
         wd.findElement(By.linkText("groups")).click();
         wd.findElement(By.name("new")).click();
-        wd.findElement(By.name("group_name")).click();
-        wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys("Test_as_01");
         wd.findElement(By.name("group_name")).click();
         wd.findElement(By.name("group_name")).clear();
         wd.findElement(By.name("group_name")).sendKeys("Test_as_01");
@@ -54,10 +47,7 @@ public class GroupCreationTests {
         wd.findElement(By.name("submit")).click();
         wd.findElement(By.linkText("groups")).click();
         wd.findElement(By.linkText("Logout")).click();
-        wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).sendKeys("\\undefined");
-        wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).sendKeys("\\undefined");
+
     }
     
     @AfterMethod
