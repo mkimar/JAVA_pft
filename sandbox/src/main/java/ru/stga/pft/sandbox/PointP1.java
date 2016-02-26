@@ -6,7 +6,7 @@ import static java.lang.Math.sqrt;
 /**
  * Created by marina on 23.02.2016.
  */
-// Создание объекта PoinP1 с атрибутами x1, y1, x2, y2.
+// Создание объекта PointP1 с атрибутами x1, y1, x2, y2.
 public class PointP1 {
 
   public double x1;
