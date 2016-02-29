@@ -37,4 +37,16 @@ public class ContactHelper extends HelperBase {
   public void newContactCreationPage() {
     click(By.linkText("add new"));
   }
+
+  public void allContacts() {
+    click(By.xpath("//div[@id='nav']//a[text()=\"home\"]"));
+  }
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void deleteContact() {
+    click(By.xpath("//input[@value=\"Delete\"]"));
+  }
 }
