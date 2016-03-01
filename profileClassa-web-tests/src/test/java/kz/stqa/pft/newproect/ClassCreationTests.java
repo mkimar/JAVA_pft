@@ -1,22 +1,15 @@
 package kz.stqa.pft.newproect;
 
 
-import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
-
 import java.util.concurrent.TimeUnit;
-import java.util.Date;
-import java.io.File;
-
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.*;
-
-import static org.openqa.selenium.OutputType.*;
 
 public class ClassCreationTests {
   FirefoxDriver wd;
@@ -62,7 +55,7 @@ public class ClassCreationTests {
     wd.findElement(By.id("fDESCRIPTION")).click();
     wd.findElement(By.id("fDESCRIPTION")).clear();
     wd.findElement(By.id("fDESCRIPTION")).sendKeys("Куртки-это удобно");
-    wd.findElement(By.id("tab-class-classification")).click();
+    wd.findElement(By.id("tab-class-classification")).click();//доработать локатор
     wd.findElement(By.id("fBASECLASS")).click();
     wd.findElement(By.cssSelector("span.dynatree-expander")).click();
     wd.findElement(By.xpath("//ul[@class='dynatree-container']/li/ul/li[2]/span/span[1]")).click();
