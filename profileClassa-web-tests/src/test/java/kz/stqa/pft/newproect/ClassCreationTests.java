@@ -1,9 +1,7 @@
 package kz.stqa.pft.newproect;
 
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -11,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -44,6 +43,7 @@ public class ClassCreationTests {
     wd.switchTo().alert().accept();
     new Select(wd.findElement(By.id("npa_select"))).selectByVisibleText("Уголовный кодекс Республики Казахстан");
     wd.findElement(By.xpath("//button[contains(text(),\"Далее\")]")).click();
+    //wd.findElement(By.xpath("//button[contains(text(),\"Пропустить\")]")).click();
     new Select(wd.findElement(By.id("fSECURITY_ID"))).selectByVisibleText("Открытая Информация");
     wd.findElement(By.id("fCLASS_NAME")).click();
     wd.findElement(By.id("fCLASS_NAME")).clear();
@@ -80,25 +80,25 @@ public class ClassCreationTests {
     wd.findElement(By.id("edit_prop_limits")).click();
     wd.findElement(By.id("edit_prop_limits")).clear();
     wd.findElement(By.id("edit_prop_limits")).sendKeys("1");
-    wd.findElement(By.xpath("//input[@id=\"edit_prop_restriks\"]")).click();
-    wd.findElement(By.xpath("//input[@id=\"edit_prop_restriks\"]")).clear();
-    wd.findElement(By.xpath("//input[@id=\"edit_prop_restriks\"]")).sendKeys("2");
+    wd.findElement(By.id("edit_prop_restriks")).click();
+    wd.findElement(By.id("edit_prop_restriks")).clear();
+    wd.findElement(By.id("edit_prop_restriks")).sendKeys("2");
     wd.findElement(By.id("edit_prop_defval")).click();
     wd.findElement(By.id("edit_prop_defval")).clear();
     wd.findElement(By.id("edit_prop_defval")).sendKeys("3");
     //new Select(wd.findElement(By.xpath("//select[@id='edit_prop_seculev']"))).selectByVisibleText("Открытая Информация");
-    wd.findElement(By.xpath("//input[@id='edit_prop_attrdescr']")).click();
-    wd.findElement(By.xpath("//input[@id='edit_prop_attrdescr']")).clear();
-    wd.findElement(By.xpath("//input[@id='edit_prop_attrdescr']")).sendKeys("4");
+    wd.findElement(By.id("edit_prop_attrdescr")).click();
+    wd.findElement(By.id("edit_prop_attrdescr")).clear();
+    wd.findElement(By.id("edit_prop_attrdescr")).sendKeys("4");
 
-    scrollRight();
+    scrollRight(); //
 
-    wd.findElement(By.xpath("//input[@id='edit_prop_attrdata']")).click();
+    wd.findElement(By.id("edit_prop_attrdata")).click();//не находит этот элемент
     wd.findElement(By.linkText("Next")).click();
     wd.findElement(By.linkText("5")).click();
-    wd.findElement(By.xpath("//input[@id='edit_prop_note']")).click();
-    wd.findElement(By.xpath("//input[@id='edit_prop_note']")).clear();
-    wd.findElement(By.xpath("//input[@id='edit_prop_note']")).sendKeys("5");
+    wd.findElement(By.id("edit_prop_note")).click();
+    wd.findElement(By.id("edit_prop_note")).clear();
+    wd.findElement(By.id("edit_prop_note")).sendKeys("5");
     wd.findElement(By.id("edit_save")).click();
     wd.findElement(By.id("tab-class-solutions")).click();
     wd.findElement(By.id("fEXPLANATORY_NOTE")).click();
@@ -111,8 +111,8 @@ public class ClassCreationTests {
 
   public void scrollRight() {
 
-    JavascriptExecutor je = (JavascriptExecutor) wd;
-    je.executeScript("window.scrollLeft(800);");
+       ((JavascriptExecutor)wd).executeScript("window.scrollBy(" + 60 + ","
+            + 0 + ");");
   }
 
   private void scrollTop() {
