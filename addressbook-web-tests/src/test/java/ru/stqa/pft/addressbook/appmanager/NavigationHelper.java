@@ -4,18 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-/**
- * Created by marina on 29.02.2016.
- */
-public class NavigationHelper {
 
-  private WebDriver wd;
+public class NavigationHelper extends HelperBase {
+
 
   public NavigationHelper(WebDriver wd) {
-    this.wd = wd;
+    super(wd);
+
   }
 
   public void gotoGroupPage() {
-    wd.findElement(By.linkText("groups")).click();
+    if (isElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+            && isElementPresent(By.name("delete"))){
+      return;
+    }
+    click(By.linkText("groups"));
   }
 }
