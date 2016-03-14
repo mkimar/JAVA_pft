@@ -8,7 +8,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 /**
  * Created by marina on 29.02.2016.
  */
-public class GroupsHelper extends HelperBase{
+public class GroupsHelper extends HelperBase {
 
   public GroupsHelper(WebDriver wd) {
     super(wd);
@@ -47,4 +47,18 @@ public class GroupsHelper extends HelperBase{
   public void submitGroupModification() {
     click(By.name("update"));
   }
+
+  public void creatGroup(GroupData group) {
+    initGroupCreation();
+    fillGroupForm(group);
+    submitGroupCreation();
+    returnToGroupPage();
+  }
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.name("selected[]"));
+
+  }
+
+
 }
