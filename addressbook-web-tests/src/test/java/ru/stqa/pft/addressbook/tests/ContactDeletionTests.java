@@ -17,7 +17,7 @@ public class ContactDeletionTests extends TestBase {
               "mkimar@mail.ru", "ContactM09", "TestNULL"), true);
     }
     app.getContactHelper().allContacts();
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().deleteContact();
     app.getContactHelper().allertDeletionContact();
     app.getContactHelper().allContacts();

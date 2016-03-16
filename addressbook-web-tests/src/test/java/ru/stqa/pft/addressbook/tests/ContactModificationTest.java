@@ -19,9 +19,9 @@ public class ContactModificationTest extends TestBase {
               "mkimar@mail.ru", "ContactM09", "TestNULL"), true);
     }
     app.getContactHelper().allContacts();
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().initContactModification();
-    app.getContactHelper().fillContactForm(new ContactData("ModC_14032016", "JA14032016", "ContactKKKKK", null, "ContactM05",
+    app.getContactHelper().fillContactForm(new ContactData("Mod_16032016", "JA14032016", "Mobil01", null, "ContactOOO",
             "ContactM06", "ContactM07", null, "1111111", "ContactM09", "2222222", null, "ContactM10", null), false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().allContacts();
