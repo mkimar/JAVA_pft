@@ -52,7 +52,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void allContacts() {
-    click(By.xpath("//div[@id='nav']//a[text()=\"home\"]"));
+    click(By.linkText("home"));
   }
 
   public void selectContact(int index) {
@@ -94,10 +94,10 @@ public class ContactHelper extends HelperBase {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("selected[]"));
     for (WebElement element : elements) {
+      String id = element.findElement(By.tagName("input")).getAttribute("value");
       String fname = element.getText();
       String mname = element.getText();
       String lname = element.getText();
-      String id = element.findElement(By.tagName("input")).getAttribute("id");
       ContactData contact = new ContactData(id, fname, mname, lname, null, null, null, null, null, null, null, null, null, null, null);
       contacts.add(contact);
     }
