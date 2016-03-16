@@ -11,7 +11,7 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() {
     app.getContactHelper().allContacts();
     int before = app.getContactHelper().getContactsCount();
-    app.getContactHelper().creatContact(new ContactData("JA14032016", "ContactM", "ContactM05", "ContactM03", "ContactM04",
+    app.getContactHelper().creatContact(new ContactData("JA17032016", "Contact11", "Contact22", "Contact33", "ContactM04",
             "ContactM05", "ContactM06", "ContactM07", "1111111", "ContactM08", "2222222",
             "mk@mail.ru", "ContactM09", "TestNULL"), true);
     app.getContactHelper().allContacts();
