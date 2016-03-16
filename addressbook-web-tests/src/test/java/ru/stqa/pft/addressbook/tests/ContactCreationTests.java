@@ -8,9 +8,9 @@ public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreation() {
-    app.getContactHelper().creatContact(new ContactData("JA14032016", "ContactM01", "ContactM02", "ContactM03", "ContactM04",
+    app.getContactHelper().creatContact(new ContactData("JA14032016", "ContactM", "ContactM04", "ContactM03", "ContactM04",
             "ContactM05", "ContactM06", "ContactM07", "1111111", "ContactM08", "2222222",
-            "mkimar@mail.ru", "ContactM09", "TestNULL"), true);
+            "mk@mail.ru", "ContactM09", "Test02"), true);
     app.getSessionHelper().logout();
 
 
