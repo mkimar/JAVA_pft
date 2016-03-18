@@ -20,8 +20,8 @@ public class ClassCreationTests {
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
     wd.manage().window().maximize();
-    wd.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-    wd.get("http://212.42.103.149:8070/Workflow/login");
+    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.get("http://in-capsule.com:9090/Workflow/login");
     login();
   }
 
@@ -41,9 +41,11 @@ public class ClassCreationTests {
     wd.findElement(By.xpath("//b[text()=\"Создать бизнес-класс\"]")).click();
     wd.findElement(By.linkText("создать")).click();
     wd.switchTo().alert().accept();
+    wd.findElement(By.id("ufd-npa_select")).click();
     new Select(wd.findElement(By.id("npa_select"))).selectByVisibleText("Уголовный кодекс Республики Казахстан");
     wd.findElement(By.xpath("//button[contains(text(),\"Далее\")]")).click();
     //wd.findElement(By.xpath("//button[contains(text(),\"Пропустить\")]")).click();
+    wd.findElement(By.id("ufd-fSECURITY_ID")).click();
     new Select(wd.findElement(By.id("fSECURITY_ID"))).selectByVisibleText("Открытая Информация");
     wd.findElement(By.id("fCLASS_NAME")).click();
     wd.findElement(By.id("fCLASS_NAME")).clear();
@@ -73,7 +75,8 @@ public class ClassCreationTests {
     wd.findElement(By.id("edit_prop_attrname")).click();
     wd.findElement(By.id("edit_prop_attrname")).clear();
     wd.findElement(By.id("edit_prop_attrname")).sendKeys("Пуговицы123");
-    //new Select(wd.findElement(By.id("edit_fldtype"))).selectByVisibleText("Вещественный");
+    wd.findElement(By.id("ufd-edit_fldtype")).click();
+    new Select(wd.findElement(By.id("edit_fldtype"))).selectByVisibleText("Вещественный");
     wd.findElement(By.id("edit_prop_mask")).click();
     wd.findElement(By.id("edit_prop_mask")).clear();
     wd.findElement(By.id("edit_prop_mask")).sendKeys("чч");
@@ -86,7 +89,8 @@ public class ClassCreationTests {
     wd.findElement(By.id("edit_prop_defval")).click();
     wd.findElement(By.id("edit_prop_defval")).clear();
     wd.findElement(By.id("edit_prop_defval")).sendKeys("3");
-    //new Select(wd.findElement(By.xpath("//select[@id='edit_prop_seculev']"))).selectByVisibleText("Открытая Информация");
+    wd.findElement(By.id("ufd-edit_prop_seculev")).click();
+    new Select(wd.findElement(By.id("edit_prop_seculev"))).selectByVisibleText("Открытая Информация");
     wd.findElement(By.id("edit_prop_attrdescr")).click();
     wd.findElement(By.id("edit_prop_attrdescr")).clear();
     wd.findElement(By.id("edit_prop_attrdescr")).sendKeys("4");
