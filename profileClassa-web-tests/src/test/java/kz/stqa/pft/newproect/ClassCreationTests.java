@@ -1,15 +1,15 @@
 package kz.stqa.pft.newproect;
 
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -19,7 +19,6 @@ public class ClassCreationTests {
   @BeforeMethod
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
-    wd.manage().window().maximize();
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://in-capsule.com:9090/Workflow/login");
     login();
@@ -41,12 +40,12 @@ public class ClassCreationTests {
     wd.findElement(By.xpath("//b[text()=\"Создать бизнес-класс\"]")).click();
     wd.findElement(By.linkText("создать")).click();
     wd.switchTo().alert().accept();
-    wd.findElement(By.id("ufd-npa_select")).click();
-    new Select(wd.findElement(By.id("npa_select"))).selectByVisibleText("Уголовный кодекс Республики Казахстан");
-    wd.findElement(By.xpath("//button[contains(text(),\"Далее\")]")).click();
-    //wd.findElement(By.xpath("//button[contains(text(),\"Пропустить\")]")).click();
-    wd.findElement(By.id("ufd-fSECURITY_ID")).click();
-    new Select(wd.findElement(By.id("fSECURITY_ID"))).selectByVisibleText("Открытая Информация");
+    //wd.findElement(By.id("ufd-npa_select")).click();
+    //new Select(wd.findElement(By.name("npa_select"))).selectByValue("1");
+    wd.findElement(By.id("close_npa")).click();
+    //wd.findElement(By.id("ufd-fSECURITY_ID")).click();
+    //new Select(wd.findElement(By.id("fSECURITY_ID"))).selectByVisibleText("Открытая Информация");
+    wd.findElement(By.xpath("//select[@id='fSECURITY_ID']//option[@value=\"2\"]")).click();
     wd.findElement(By.id("fCLASS_NAME")).click();
     wd.findElement(By.id("fCLASS_NAME")).clear();
     wd.findElement(By.id("fCLASS_NAME")).sendKeys("Куртки");
@@ -60,11 +59,11 @@ public class ClassCreationTests {
     wd.findElement(By.id("fDESCRIPTION")).clear();
     wd.findElement(By.id("fDESCRIPTION")).sendKeys("Куртки-это удобно");
     wd.findElement(By.id("fEFFECTIVE_DATE")).click();
-    wd.findElement(By.linkText("Next")).click();
-    wd.findElement(By.linkText("5")).click();
+    wd.findElement(By.xpath("//span[contains(text(),\"След\")]"));
+    //wd.findElement(By.linkText("Next")).click();
+    wd.findElement(By.linkText("28")).click();
     scrollTop();// скроллинг вверх
     wd.findElement(By.xpath("//a[@id='tab-class-classification']")).click();
-    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.findElement(By.xpath("//input[@id='fBASECLASS']")).click();//клик для открытия дерева
     wd.findElement(By.xpath("//span[@class=\"dynatree-expander\"]")).click();// раскрытие дерева
     wd.findElement(By.xpath("//ul[@class='dynatree-container']/li/ul/li[2]/span/span[1]")).click();//расрытие дерева Товар
@@ -76,7 +75,8 @@ public class ClassCreationTests {
     wd.findElement(By.id("edit_prop_attrname")).clear();
     wd.findElement(By.id("edit_prop_attrname")).sendKeys("Пуговицы123");
     wd.findElement(By.id("ufd-edit_fldtype")).click();
-    new Select(wd.findElement(By.id("edit_fldtype"))).selectByVisibleText("Вещественный");
+    //new Select(wd.findElement(By.id("edit_fldtype"))).selectByVisibleText("Вещественный");
+    wd.findElement(By.xpath("//select[@id='edit_fldtype']//option[@value=\"1\"]")).click();
     wd.findElement(By.id("edit_prop_mask")).click();
     wd.findElement(By.id("edit_prop_mask")).clear();
     wd.findElement(By.id("edit_prop_mask")).sendKeys("чч");
@@ -89,8 +89,9 @@ public class ClassCreationTests {
     wd.findElement(By.id("edit_prop_defval")).click();
     wd.findElement(By.id("edit_prop_defval")).clear();
     wd.findElement(By.id("edit_prop_defval")).sendKeys("3");
-    wd.findElement(By.id("ufd-edit_prop_seculev")).click();
-    new Select(wd.findElement(By.id("edit_prop_seculev"))).selectByVisibleText("Открытая Информация");
+    //wd.findElement(By.id("ufd-edit_prop_seculev")).click();
+    //new Select(wd.findElement(By.id("edit_prop_seculev"))).selectByVisibleText("Открытая Информация");
+    wd.findElement(By.xpath("//select[@id='edit_prop_seculev']//option[@value=\"3\"]")).click();
     wd.findElement(By.id("edit_prop_attrdescr")).click();
     wd.findElement(By.id("edit_prop_attrdescr")).clear();
     wd.findElement(By.id("edit_prop_attrdescr")).sendKeys("4");
@@ -115,7 +116,7 @@ public class ClassCreationTests {
 
   public void scrollRight() {
 
-       ((JavascriptExecutor)wd).executeScript("window.scrollBy(" + 60 + ","
+    ((JavascriptExecutor) wd).executeScript("window.scrollBy(" + 60 + ","
             + 0 + ");");
   }
 
