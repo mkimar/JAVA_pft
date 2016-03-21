@@ -7,6 +7,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.TestNG;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -20,7 +21,7 @@ public class ClassAnalyzeTests {
 
   @BeforeMethod
 
-  public void main() throws Exception {
+  public void setUp() throws Exception {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     wd.get("http://in-capsule.com:9090/Workflow/login");
@@ -63,7 +64,7 @@ public class ClassAnalyzeTests {
 
   public void screenPage() throws IOException {
     File screenshot = ((TakesScreenshot) wd).getScreenshotAs(OutputType.FILE);
-    String path = "c:/Users/marina/Downloads/" + screenshot.getName();
+    String path = "c:/TESTS SELENIUM/" + screenshot.getName();
     FileUtils.copyFile(screenshot, new File(path));
   }
 

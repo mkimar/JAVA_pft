@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -19,7 +20,7 @@ public class ClassCreationTests {
   @BeforeMethod
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
-    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://in-capsule.com:9090/Workflow/login");
     login();
   }
@@ -43,8 +44,8 @@ public class ClassCreationTests {
     //wd.findElement(By.id("ufd-npa_select")).click();
     //new Select(wd.findElement(By.name("npa_select"))).selectByValue("1");
     wd.findElement(By.id("close_npa")).click();
-    //wd.findElement(By.id("ufd-fSECURITY_ID")).click();
-    //new Select(wd.findElement(By.id("fSECURITY_ID"))).selectByVisibleText("Открытая Информация");
+    wd.findElement(By.id("ufd-fSECURITY_ID")).click();
+    new Select(wd.findElement(By.id("fSECURITY_ID"))).selectByVisibleText("Открытая Информация");
     wd.findElement(By.xpath("//select[@id='fSECURITY_ID']//option[@value=\"2\"]")).click();
     wd.findElement(By.id("fCLASS_NAME")).click();
     wd.findElement(By.id("fCLASS_NAME")).clear();
