@@ -20,6 +20,7 @@ public class ClassCreationTests {
   @BeforeMethod
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
+    wd.manage().window().maximize();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://in-capsule.com:9090/Workflow/login");
     login();
@@ -41,12 +42,21 @@ public class ClassCreationTests {
     wd.findElement(By.xpath("//b[text()=\"Создать бизнес-класс\"]")).click();
     wd.findElement(By.linkText("создать")).click();
     wd.switchTo().alert().accept();
-    //wd.findElement(By.id("ufd-npa_select")).click();
-    //new Select(wd.findElement(By.name("npa_select"))).selectByValue("1");
+    //Выбор НПА
+    wd.findElement(By.id("ufd-npa_select")).click();
+    wd.findElement(By.xpath("//div[@id='ufd-container']/div[2]//li[2]")).click();
+    if (!wd.findElement(By.xpath("//select[@id='npa_select']//option[2]")).isSelected()) {
+    wd.findElement(By.xpath("//select[@id='npa_select']//option[2]")).click();
+    }
     wd.findElement(By.id("close_npa")).click();
+    //Выбор уровня секретности
     wd.findElement(By.id("ufd-fSECURITY_ID")).click();
-    new Select(wd.findElement(By.id("fSECURITY_ID"))).selectByVisibleText("Открытая Информация");
-    wd.findElement(By.xpath("//select[@id='fSECURITY_ID']//option[@value=\"2\"]")).click();
+    wd.findElement(By.name("7")).click();//"Открытая Информация"
+    if (!wd.findElement(By.xpath("//select[@id='fSECURITY_ID']//option[8]")).isSelected()) {
+      wd.findElement(By.xpath("//select[@id='fSECURITY_ID']//option[8]")).click();
+    }
+    wd.findElement(By.id("saveProfile")).click();//Сохранить
+    //new Select(wd.findElement(By.id("fSECURITY_ID"))).selectByVisibleText("Открытая Информация");
     wd.findElement(By.id("fCLASS_NAME")).click();
     wd.findElement(By.id("fCLASS_NAME")).clear();
     wd.findElement(By.id("fCLASS_NAME")).sendKeys("Куртки");
@@ -63,6 +73,7 @@ public class ClassCreationTests {
     wd.findElement(By.xpath("//span[contains(text(),\"След\")]"));
     //wd.findElement(By.linkText("Next")).click();
     wd.findElement(By.linkText("28")).click();
+    wd.findElement(By.id("saveProfile")).click();//Сохранить
     scrollTop();// скроллинг вверх
     wd.findElement(By.xpath("//a[@id='tab-class-classification']")).click();
     wd.findElement(By.xpath("//input[@id='fBASECLASS']")).click();//клик для открытия дерева
@@ -75,31 +86,42 @@ public class ClassCreationTests {
     wd.findElement(By.id("edit_prop_attrname")).click();
     wd.findElement(By.id("edit_prop_attrname")).clear();
     wd.findElement(By.id("edit_prop_attrname")).sendKeys("Пуговицы123");
+    wd.findElement(By.id("saveProfile")).click();//Сохранить
+    //выбор типа поля
     wd.findElement(By.id("ufd-edit_fldtype")).click();
+    wd.findElement(By.xpath("//div[@id='ufd-container']//li[.='Символьный']")).click();
+    if (!wd.findElement(By.xpath("//select[@id='edit_fldtype']//option[6]")).isSelected()) {
+      wd.findElement(By.xpath("//select[@id='edit_fldtype']//option[6]")).click();
+    }
     //new Select(wd.findElement(By.id("edit_fldtype"))).selectByVisibleText("Вещественный");
-    wd.findElement(By.xpath("//select[@id='edit_fldtype']//option[@value=\"1\"]")).click();
     wd.findElement(By.id("edit_prop_mask")).click();
     wd.findElement(By.id("edit_prop_mask")).clear();
     wd.findElement(By.id("edit_prop_mask")).sendKeys("чч");
+    wd.findElement(By.id("saveProfile")).click();//Сохранить
     wd.findElement(By.id("edit_prop_limits")).click();
     wd.findElement(By.id("edit_prop_limits")).clear();
     wd.findElement(By.id("edit_prop_limits")).sendKeys("1");
-    wd.findElement(By.id("edit_prop_restriks")).click();
-    wd.findElement(By.id("edit_prop_restriks")).clear();
-    wd.findElement(By.id("edit_prop_restriks")).sendKeys("2");
+    //wd.findElement(By.id("edit_prop_restriks")).click();
+    //wd.findElement(By.id("edit_prop_restriks")).clear();
+    //wd.findElement(By.id("edit_prop_restriks")).sendKeys("2");
     wd.findElement(By.id("edit_prop_defval")).click();
     wd.findElement(By.id("edit_prop_defval")).clear();
     wd.findElement(By.id("edit_prop_defval")).sendKeys("3");
-    //wd.findElement(By.id("ufd-edit_prop_seculev")).click();
     //new Select(wd.findElement(By.id("edit_prop_seculev"))).selectByVisibleText("Открытая Информация");
-    wd.findElement(By.xpath("//select[@id='edit_prop_seculev']//option[@value=\"3\"]")).click();
+    wd.findElement(By.id("ufd-edit_prop_seculev")).click();
+    wd.findElement(By.xpath("//div[@id='ufd-container']/div[3]/div/div/ul/li[3]")).click();
+    if (!wd.findElement(By.xpath("//select[@id='edit_prop_seculev']//option[3]")).isSelected()) {
+      wd.findElement(By.xpath("//select[@id='edit_prop_seculev']//option[3]")).click();
+    }
+    wd.findElement(By.id("saveProfile")).click();//Сохранить
     wd.findElement(By.id("edit_prop_attrdescr")).click();
     wd.findElement(By.id("edit_prop_attrdescr")).clear();
     wd.findElement(By.id("edit_prop_attrdescr")).sendKeys("4");
 
     scrollRight(); //
-
-    wd.findElement(By.id("edit_prop_attrdata")).click();//не находит этот элемент
+    
+    wd.findElement(By.xpath("//table[@id=\"attrs_table\"]//td[13]")).click();
+    wd.findElement(By.id("edit_prop_attrdata")).click();//не находит этот элемент!!!
     wd.findElement(By.linkText("Next")).click();
     wd.findElement(By.linkText("5")).click();
     wd.findElement(By.id("edit_prop_note")).click();
@@ -117,7 +139,7 @@ public class ClassCreationTests {
 
   public void scrollRight() {
 
-    ((JavascriptExecutor) wd).executeScript("window.scrollBy(" + 60 + ","
+    ((JavascriptExecutor) wd).executeScript("window.scrollBy(" + 100 + ","
             + 0 + ");");
   }
 
