@@ -58,7 +58,7 @@ public class ClassCreationTests {
     //new Select(wd.findElement(By.id("fSECURITY_ID"))).selectByVisibleText("Открытая Информация"); почему-то этот код не работает!!!
     wd.findElement(By.id("fCLASS_NAME")).click();//Имя класса
     wd.findElement(By.id("fCLASS_NAME")).clear();//Имя класса
-    wd.findElement(By.id("fCLASS_NAME")).sendKeys("КурткиАвтотест05");//Имя класса
+    wd.findElement(By.id("fCLASS_NAME")).sendKeys("КурткиАвтотестMK01");//Имя класса
     wd.findElement(By.id("fTARGET")).click(); //Цель создания класса
     wd.findElement(By.id("fTARGET")).clear();//Цель создания класса
     wd.findElement(By.id("fTARGET")).sendKeys("Учет");//Цель создания класса

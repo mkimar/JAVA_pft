@@ -23,6 +23,7 @@ public class ClassAnalyzeTests {
 
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
+    wd.manage().window().maximize();
     wd.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     wd.get("http://in-capsule.com:9090/Workflow/login");
     login();
