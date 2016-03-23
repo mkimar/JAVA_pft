@@ -80,6 +80,7 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
+    if (id != that.id) return false;
     if (lname != null ? !lname.equals(that.lname) : that.lname != null) return false;
     if (fname != null ? !fname.equals(that.fname) : that.fname != null) return false;
     return mname != null ? mname.equals(that.mname) : that.mname == null;
@@ -88,7 +89,8 @@ public class ContactData {
 
   @Override
   public int hashCode() {
-    int result = lname != null ? lname.hashCode() : 0;
+    int result = id;
+    result = 31 * result + (lname != null ? lname.hashCode() : 0);
     result = 31 * result + (fname != null ? fname.hashCode() : 0);
     result = 31 * result + (mname != null ? mname.hashCode() : 0);
     return result;

@@ -8,8 +8,9 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 
 
 public class ContactHelper extends HelperBase {
@@ -49,6 +50,10 @@ public class ContactHelper extends HelperBase {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
   public void deleteContact() {
     click(By.xpath("//input[@value=\"Delete\"]"));
   }
@@ -72,9 +77,9 @@ public class ContactHelper extends HelperBase {
     submitContactForm();
   }
 
-  public void modify(List<ContactData> before, ContactData contact) {
+  public void modify(ContactData contact) {
     contactsPage();
-    selectContact(before.size() - 1);
+    selectContactById(contact.getId());
     initContactModification();
     fillContactForm(contact, false);
     submitContactModification();
@@ -88,6 +93,17 @@ public class ContactHelper extends HelperBase {
     allertDeletionContact();
     contactsPage();
   }
+
+  public void delete(ContactData contact) {
+    contactsPage();
+    selectContactById(contact.getId());
+    deleteContact();
+    allertDeletionContact();
+    contactsPage();
+
+  }
+
+
 
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
@@ -109,5 +125,20 @@ public class ContactHelper extends HelperBase {
     }
     return contacts;
   }
+
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
+    List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
+    for (WebElement element : elements) {
+      String lname = element.getText();
+      String fname = element.getText();
+      String mname = element.getText();
+      Integer id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      contacts.add(new ContactData().withId(id).withLname(lname).withFname(fname).withMname(mname));
+    }
+    return contacts;
+  }
+
+
 }
 
