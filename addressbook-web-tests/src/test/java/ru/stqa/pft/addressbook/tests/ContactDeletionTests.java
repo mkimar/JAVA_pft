@@ -1,13 +1,11 @@
 package ru.stqa.pft.addressbook.tests;
 
 
-import com.sun.xml.internal.ws.server.sei.SEIInvokerTube;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.List;
 import java.util.Set;
 
 public class ContactDeletionTests extends TestBase {
