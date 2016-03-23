@@ -5,32 +5,30 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class GroupDeletionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions(){
-    app.getNavigationHelper().gotoGroupPage();
-    if (!app.getGroupsHelper().isThereAGroup()) {
-      app.getGroupsHelper().creatGroup(new GroupData("TestNULL", "rewa14032016", "rewa2"));
+    app.getNavigationHelper().groupPage();
+    if (app.group().list().size() == 0)  {
+      app.group().create(new GroupData("TestNULL", "rewa14032016", "rewa2"));
     }
   }
   @Test
   public void testGroupDeletion() {
-    List<GroupData> before = app.getGroupsHelper().getGroupList();
-    app.getGroupsHelper().selectGroup(before.size() - 1);
-    app.getGroupsHelper().deleteGroup();
-    GroupData group = new GroupData("TestNULL", null, "as_03");
-    app.getGroupsHelper().returnToGroupPage();
-    List<GroupData> after = app.getGroupsHelper().getGroupList();
+    List<GroupData> before = app.group().list();
+    int index = before.size() - 1;
+    app.group().delete(index);
+    List<GroupData> after = app.group().list();
     Assert.assertEquals(after.size(), before.size() - 1);// сравнение размеров двух списков
 
-    before.remove(before.size()-1); // перед сравнением удаляется элемент из первоначального списка
+    before.remove(index); // перед сравнением удаляется элемент из первоначального списка
     Assert.assertEquals(before, after);// сравнение объектов/списков
 
   }
+
 
 
 }

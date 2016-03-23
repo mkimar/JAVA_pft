@@ -48,7 +48,7 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  public GroupsHelper getGroupsHelper() {
+  public GroupsHelper group() {
     return groupsHelper;
   }
 
