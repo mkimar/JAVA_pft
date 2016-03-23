@@ -2,38 +2,45 @@ package ru.stqa.pft.addressbook.model;
 
 
 public class ContactData {
-  private int id;
-  private final String lname;
-  private final String fname;
-  private final String mname;
-  private final String nickname;
-  private final String group;
-
-  public ContactData(String lname, String fname, String mname, String nickname, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.lname = lname;
-    this.fname = fname;
-    this.mname = mname;
-    this.nickname = nickname;
-    this.group = group;
-  }
-
-
-  public ContactData(int id, String lname, String fname, String mname, String nickname, String group) {
-    this.id = id;
-    this.lname = lname;
-    this.fname = fname;
-    this.mname = mname;
-    this.nickname = nickname;
-    this.group = group;
-  }
+  private int id= Integer.MAX_VALUE;
+  private String lname;
+  private String fname;
+  private String mname;
+  private String nickname;
+  private String group;
 
   public int getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public ContactData withLname(String lname) {
+    this.lname = lname;
+    return this;
+  }
+
+  public ContactData withFname(String fname) {
+    this.fname = fname;
+    return this;
+  }
+
+  public ContactData withMname(String mname) {
+    this.mname = mname;
+    return this;
+  }
+
+  public ContactData withNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
   }
 
   public String getFname() {
