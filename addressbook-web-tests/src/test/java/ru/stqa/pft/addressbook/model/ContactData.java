@@ -8,6 +8,10 @@ public class ContactData {
   private String mname;
   private String nickname;
   private String group;
+  private String home;
+  private String mobile;
+  private String work;
+
 
   public int getId() {
     return id;
@@ -43,6 +47,21 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withHomePhone(String home) {
+    this.home = home;
+    return this;
+  }
+
+  public ContactData withMobile(String mobile) {
+    this.mobile = mobile;
+    return this;
+  }
+
+  public ContactData withWork(String work) {
+    this.work = work;
+    return this;
+  }
+
   public String getFname() {
     return fname;
   }
@@ -63,13 +82,24 @@ public class ContactData {
     return group;
   }
 
+  public String getHome() {
+    return home;
+  }
+
+  public String getMobile() {
+    return mobile;
+  }
+
+  public String getWork() {
+    return work;
+  }
 
   @Override
   public String toString() {
     return "ContactData{" +
-            "lname='" + lname + '\'' +
+            "id=" + id +
+            ", lname='" + lname + '\'' +
             ", fname='" + fname + '\'' +
-            ", mname='" + mname + '\'' +
             '}';
   }
 
@@ -82,8 +112,7 @@ public class ContactData {
 
     if (id != that.id) return false;
     if (lname != null ? !lname.equals(that.lname) : that.lname != null) return false;
-    if (fname != null ? !fname.equals(that.fname) : that.fname != null) return false;
-    return mname != null ? mname.equals(that.mname) : that.mname == null;
+    return fname != null ? fname.equals(that.fname) : that.fname == null;
 
   }
 
@@ -92,7 +121,6 @@ public class ContactData {
     int result = id;
     result = 31 * result + (lname != null ? lname.hashCode() : 0);
     result = 31 * result + (fname != null ? fname.hashCode() : 0);
-    result = 31 * result + (mname != null ? mname.hashCode() : 0);
     return result;
   }
 }
