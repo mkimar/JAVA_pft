@@ -1,6 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import com.sun.javafx.binding.StringFormatter;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -122,8 +122,11 @@ public class ContactHelper extends HelperBase {
       String lname = cells.get(1).getText();
       String fname = cells.get(2).getText();
       String[] phones = cells.get(5).getText().split("\n");
+      String[] emails = cells.get(4).getText().split("\n");
+      String addresss = cells.get(3).getText();
       contactCache.add(new ContactData().withId(id).withLname(lname).withFname(fname)
-              .withHomePhone(phones [0]).withMobile(phones[1]).withWork(phones[2]));
+              .withHomePhone(phones [0]).withMobile(phones[1]).withWork(phones[2])
+              .withEmail(emails[0]).withEmail2(emails[1]).withEmail3(emails[2]).withAddress(addresss));
     }
     return new Contacts (contactCache);
   }
@@ -135,9 +138,14 @@ public class ContactHelper extends HelperBase {
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
+    String email = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getText();
     wd.navigate().back();
     return new ContactData().withId(contact.getId())
-            .withFname(fname).withLname(lname).withHomePhone(home).withMobile(mobile).withWork(work);
+            .withFname(fname).withLname(lname).withHomePhone(home).withMobile(mobile).withWork(work)
+            .withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address);
 
   }
 

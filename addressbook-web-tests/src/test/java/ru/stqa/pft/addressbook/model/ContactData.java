@@ -11,6 +11,10 @@ public class ContactData {
   private String home;
   private String mobile;
   private String work;
+  private String email;
+  private String email2;
+  private String email3;
+  private String address;
 
 
   public int getId() {
@@ -62,6 +66,26 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public ContactData withEmail2 (String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
+  public ContactData withAddress (String address) {
+    this.address = address;
+    return this;
+  }
+
   public String getFname() {
     return fname;
   }
@@ -94,6 +118,22 @@ public class ContactData {
     return work;
   }
 
+  public String getEmail() {
+    return email;
+  }
+
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
   @Override
   public String toString() {
     return "ContactData{" +
@@ -123,4 +163,7 @@ public class ContactData {
     result = 31 * result + (fname != null ? fname.hashCode() : 0);
     return result;
   }
+
+
+
 }
