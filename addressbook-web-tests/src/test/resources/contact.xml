@@ -9,9 +9,4 @@
     <fname>fname 1</fname>
     <group>TestNULL</group>
   </contact>
-  <contact>
-    <lname>lname 2</lname>
-    <fname>fname 2</fname>
-    <group>TestNULL</group>
-  </contact>
 </list>
