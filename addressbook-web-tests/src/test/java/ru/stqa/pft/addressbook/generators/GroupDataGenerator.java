@@ -15,11 +15,11 @@ import java.util.List;
 
 public class GroupDataGenerator {
 
-  @Parameter (names = "-c", description = "Group count")
+  @Parameter(names = "-c", description = "Group count")
   public int count;
 
 
-  @Parameter (names = "-f", description = "Target file")
+  @Parameter(names = "-f", description = "Target file")
   public String file;
 
 
@@ -38,20 +38,20 @@ public class GroupDataGenerator {
 
   private void run() throws IOException {
     List<GroupData> groups = generatesGroups(count);
-    save(groups,new File(file));
+    save(groups, new File(file));
   }
 
-  private  void save(List<GroupData> groups, File file) throws IOException {
-     System.out.println(new File(".").getAbsolutePath());
-     Writer writer = new FileWriter(file);
-     for (GroupData group: groups) {
-       writer.write(String.format("%s;%s;%s\n",group.getName(), group.getHeader(), group.getFooter()));
-     }
-     writer.close();
+  private void save(List<GroupData> groups, File file) throws IOException {
+    System.out.println(new File(".").getAbsolutePath());
+    Writer writer = new FileWriter(file);
+    for (GroupData group : groups) {
+      writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(), group.getFooter()));
+    }
+    writer.close();
 
   }
 
-  private  List<GroupData> generatesGroups(int count) {
+  private List<GroupData> generatesGroups(int count) {
     List<GroupData> groups = new ArrayList<GroupData>();
     for (int i = 0; i < count; i++) {
       groups.add(new GroupData().withName(String.format("test %s", i))

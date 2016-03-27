@@ -17,6 +17,8 @@ repositories {
 
         compile 'com.thoughtworks.xstream:xstream:1.4.9'
 
+        compile 'com.google.code.gson:gson:2.6.2'
+
 
 
 }
