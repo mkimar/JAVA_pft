@@ -1,6 +1,8 @@
 package ru.stqa.pft.addressbook.model;
 
 
+import java.io.File;
+
 public class ContactData {
   private int id= Integer.MAX_VALUE;
   private String lname;
@@ -25,10 +27,24 @@ public class ContactData {
   private String phone2;
   private String notes;
   private String allnames;
+  private File photo;
 
 
   public int getId() {
     return id;
+  }
+
+  public String getAllnames() {
+    return allnames;
+  }
+
+  public File getPhoto() {
+    return photo;
+  }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
   }
 
   public ContactData withId(int id) {
@@ -234,13 +250,13 @@ public class ContactData {
   }
 
 
-
   @Override
   public String toString() {
     return "ContactData{" +
             "id=" + id +
             ", lname='" + lname + '\'' +
             ", fname='" + fname + '\'' +
+            ", mname='" + mname + '\'' +
             '}';
   }
 
@@ -253,8 +269,7 @@ public class ContactData {
 
     if (id != that.id) return false;
     if (lname != null ? !lname.equals(that.lname) : that.lname != null) return false;
-    if (fname != null ? !fname.equals(that.fname) : that.fname != null) return false;
-    return mname != null ? mname.equals(that.mname) : that.mname == null;
+    return fname != null ? fname.equals(that.fname) : that.fname == null;
 
   }
 
@@ -263,7 +278,6 @@ public class ContactData {
     int result = id;
     result = 31 * result + (lname != null ? lname.hashCode() : 0);
     result = 31 * result + (fname != null ? fname.hashCode() : 0);
-    result = 31 * result + (mname != null ? mname.hashCode() : 0);
     return result;
   }
 }

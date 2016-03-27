@@ -20,14 +20,13 @@ public class ContactHelper extends HelperBase {
   }
 
   public void submitContactForm() {
-    click(By.xpath("//div[@id='content']/form/input[21]"));
+    click(By.name("submit"));
   }
 
   public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("lastname"), contactData.getLname());
     type(By.name("firstname"), contactData.getFname());
-    type(By.name("middlename"), contactData.getMname());
-    type(By.name("nickname"), contactData.getNickname());
+    attach(By.name("photo"), contactData.getPhoto());
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
 
@@ -129,14 +128,15 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
       String lname = cells.get(1).getText();
       String fname = cells.get(2).getText();
+      String address = cells.get(3).getText();
       String allphones = cells.get(5).getText();
       String[] emails = cells.get(4).getText().split("\n");
       //String allemails = cells.get(4).getText();
-      String addresss = cells.get(3).getText();
+
       contactCache.add(new ContactData().withId(id).withLname(lname).withFname(fname)
               .withAllHomePhones(allphones)
-              .withEmail(emails[0]).withEmail2(emails[1]).withEmail3(emails[2])
-              .withAddress(addresss));
+              .withEmail(emails[0]).withEmail2(emails[1]).withEmail3(emails[2])//при создании,удалении и модификации контакта это надо отключить
+              .withAddress(address));
     }
     return new Contacts(contactCache);
   }
@@ -177,11 +177,10 @@ public class ContactHelper extends HelperBase {
     wd.navigate().back();
     return new ContactData().withId(contact.getId())
             .withFname(allname[0])
-            //.withLname(allname[1]).withMname(allname[2])
-            .withNickname(allname[1]).withTitle(allname[2]).withCompany(allname[3]).withAddress(allname[4])
-            .withHomePhone(allname[6]).withMobile(allname[7]).withWork(allname[8]).withFax(allname[9])
-            .withEmail(allname[11]).withEmail2(allname[12]).withEmail3(allname[13])
-            .withHomepage(allname[15]).withAddress2(allname[20]).withPhone2(allname[22]).withNotes(allname[24]);
+            .withNickname(allname[1]).withTitle(allname[3]).withCompany(allname[4]).withAddress(allname[5])
+            .withHomePhone(allname[7]).withMobile(allname[8]).withWork(allname[9]).withFax(allname[10])
+            .withEmail(allname[12]).withEmail2(allname[13]).withEmail3(allname[14])
+            .withHomepage(allname[16]).withAddress2(allname[21]).withPhone2(allname[23]).withNotes(allname[25]);
 
   }
 
