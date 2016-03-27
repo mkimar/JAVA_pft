@@ -1,0 +1,12 @@
+[
+  {
+    "lname": "lname 0JSON",
+    "fname": "fname 0",
+    "group": "TestNULL"
+  },
+  {
+    "lname": "lname 1",
+    "fname": "fname 1",
+    "group": "TestNULL"
+  }
+]
