@@ -1,9 +1,12 @@
 package ru.stqa.pft.addressbook.tests;
 
 
+import com.beust.jcommander.Parameter;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
+
+import java.io.File;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -28,7 +31,7 @@ public class GroupCreationTests extends TestBase {
 
   }
 
-  @Test
+  @Test // негативный тест
   public void testBadGroupCreation() {
     app.getNavigationHelper().groupPage();
     Groups before = app.group().all();
