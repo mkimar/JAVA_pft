@@ -135,7 +135,7 @@ public class ContactHelper extends HelperBase {
 
       contactCache.add(new ContactData().withId(id).withLname(lname).withFname(fname)
               .withAllHomePhones(allphones)
-              .withEmail(emails[0]).withEmail2(emails[1]).withEmail3(emails[2])//при создании,удалении и модификации контакта это надо отключить
+            //  .withEmail(emails[0]).withEmail2(emails[1]).withEmail3(emails[2])//при создании,удалении и модификации контакта это надо отключить
               .withAddress(address));
     }
     return new Contacts(contactCache);

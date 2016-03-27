@@ -255,8 +255,6 @@ public class ContactData {
     return "ContactData{" +
             "id=" + id +
             ", lname='" + lname + '\'' +
-            ", fname='" + fname + '\'' +
-            ", mname='" + mname + '\'' +
             '}';
   }
 
