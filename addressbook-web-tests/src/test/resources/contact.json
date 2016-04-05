@@ -1,12 +1,10 @@
 [
   {
-    "lname": "lname dddd0",
-    "fname": "fname 0",
-    "group": "TestNULL"
-  },
-  {
-    "lname": "lname 1",
-    "fname": "fname 1",
+    "fname": "fname photo0",
+    "lname": "lname 0",
+    "address": "address 0",
+    "email": "email@mail.ru 0",
+    "email2": "rew@nik.ru 0",
     "group": "TestNULL"
   }
 ]

@@ -12,20 +12,24 @@ public class ContactData {
   @XStreamOmitField
   private int id= Integer.MAX_VALUE;
   @Expose
-  private String lname;
-  @Expose
   private String fname;
+  @Expose
+  private String lname;
+
   private String mname;
   private String nickname;
-  @Expose
-  private String group;
   private String home;
   private String mobile;
   private String work;
+  @Expose
+  private String address;
+  @Expose
   private String email;
+  @Expose
   private String email2;
   private String email3;
-  private String address;
+  @Expose
+  private String group;
   private String allphones;
   private String allemails;
   private String title;
@@ -36,6 +40,7 @@ public class ContactData {
   private String phone2;
   private String notes;
   private String allnames;
+  @Expose
   private File photo;
 
 
