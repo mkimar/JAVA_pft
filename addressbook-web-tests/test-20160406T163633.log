@@ -1,6 +1,0 @@
-15226 [main] INFO  r.s.pft.addressbook.tests.TestBase - Start test testContactCreation with parameters []
-27312 [main] INFO  r.s.pft.addressbook.tests.TestBase - Stop test testContactCreation
-27312 [main] INFO  r.s.pft.addressbook.tests.TestBase - Start test testContactCreation with parameters []
-32544 [main] INFO  r.s.pft.addressbook.tests.TestBase - Stop test testContactCreation
-32544 [main] INFO  r.s.pft.addressbook.tests.TestBase - Start test testContactCreation with parameters []
-37987 [main] INFO  r.s.pft.addressbook.tests.TestBase - Stop test testContactCreation
