@@ -57,8 +57,6 @@ public class GroupData {
     return "GroupData{" +
             "id=" + id +
             ", name='" + name + '\'' +
-            ", header='" + header + '\'' +
-            ", footer='" + footer + '\'' +
             '}';
   }
 

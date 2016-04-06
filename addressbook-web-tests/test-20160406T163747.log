@@ -1,0 +1,6 @@
+9953 [main] INFO  r.s.pft.addressbook.tests.TestBase - Start test testBadGroupCreation with parameters []
+12504 [main] INFO  r.s.pft.addressbook.tests.TestBase - Stop test testBadGroupCreation
+12527 [main] INFO  r.s.pft.addressbook.tests.TestBase - Start test testGroupCreation with parameters []
+14661 [main] INFO  r.s.pft.addressbook.tests.TestBase - Stop test testGroupCreation
+14662 [main] INFO  r.s.pft.addressbook.tests.TestBase - Start test testGroupCreation with parameters []
+16675 [main] INFO  r.s.pft.addressbook.tests.TestBase - Stop test testGroupCreation
