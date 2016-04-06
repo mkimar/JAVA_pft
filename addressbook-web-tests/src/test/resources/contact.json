@@ -6,21 +6,5 @@
     "email": "email@mail.ru 0",
     "email2": "rew@nik.ru 0",
     "group": "TestNULL"
-  },
-  {
-    "fname": "fname 1",
-    "lname": "lname 1",
-    "address": "address 1",
-    "email": "email@mail.ru 1",
-    "email2": "rew@nik.ru 1",
-    "group": "TestNULL"
-  },
-  {
-    "fname": "fname 2",
-    "lname": "lname 2",
-    "address": "address 2",
-    "email": "email@mail.ru 2",
-    "email2": "rew@nik.ru 2",
-    "group": "TestNULL"
   }
 ]
