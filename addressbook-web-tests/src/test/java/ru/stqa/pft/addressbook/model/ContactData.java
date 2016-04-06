@@ -4,43 +4,98 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+
   @XStreamOmitField
-  private int id= Integer.MAX_VALUE;
+  @Id
+  @Column(name = "id")
+  private int id = Integer.MAX_VALUE;
+
   @Expose
+  @Column(name = "firstname")
   private String fname;
+
   @Expose
+  @Column(name = "lastname")
   private String lname;
 
+  @Expose
+  @Column(name = "middlename")
   private String mname;
+
+  @Expose
+  @Column(name = "nickname")
   private String nickname;
+
+  @Expose
+  @Column(name = "home")
+  @Type(type = "text")
   private String home;
+
+  @Expose
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobile;
+
+  @Expose
+  @Column(name = "work")
+  @Type(type = "text")
   private String work;
+
   @Expose
+  @Column(name = "address")
+  @Type(type = "text")
   private String address;
+
   @Expose
+  @Column(name = "email")
+  @Type(type = "text")
   private String email;
+
   @Expose
+  @Column(name = "email2")
+  @Type(type = "text")
   private String email2;
-  private String email3;
+
   @Expose
+  @Column(name = "email3")
+  @Type(type = "text")
+  private String email3;
+
+  @Expose
+  @Transient
   private String group;
-  private String allphones;
-  private String allemails;
+
+  @Transient
   private String title;
+  @Transient
   private String company;
+  @Transient
   private String fax;
+  @Transient
   private String homepage;
+  @Transient
   private String address2;
+  @Transient
   private String phone2;
+  @Transient
   private String notes;
+  @Transient
+  private String allphones;
+  @Transient
+  private String allemails;
+  @Transient
   private String allnames;
   @Expose
+  @Transient
   private File photo;
 
 
@@ -126,7 +181,7 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withEmail2 (String email2) {
+  public ContactData withEmail2(String email2) {
     this.email2 = email2;
     return this;
   }
@@ -141,7 +196,7 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withAddress (String address) {
+  public ContactData withAddress(String address) {
     this.address = address;
     return this;
   }
@@ -170,6 +225,7 @@ public class ContactData {
     this.allemails = allemails;
     return this;
   }
+
   public ContactData withAllNames(String allnames) {
     this.allnames = allnames;
     return this;
@@ -268,7 +324,9 @@ public class ContactData {
   public String toString() {
     return "ContactData{" +
             "id=" + id +
+            ", fname='" + fname + '\'' +
             ", lname='" + lname + '\'' +
+            ", mname='" + mname + '\'' +
             '}';
   }
 
