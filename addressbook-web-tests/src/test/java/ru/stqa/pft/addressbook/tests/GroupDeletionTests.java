@@ -31,7 +31,8 @@ public class GroupDeletionTests extends TestBase {
     Groups after = app.db().groups();
     assertThat(after.size(), equalTo(before.size() - 1));// сравнение размеров двух списков
     assertThat(after, equalTo(before.withOut(deletedGroup)));// сравнение объектов/списков
-
+    verifyGroupListInUI();// отключено сравнение списка групп из базы данных со списком групп в интерфейсе
+    // , для включения необходимо изменить параметр
   }
 
 

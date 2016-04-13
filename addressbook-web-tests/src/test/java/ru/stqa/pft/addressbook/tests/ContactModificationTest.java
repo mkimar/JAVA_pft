@@ -27,12 +27,12 @@ public class ContactModificationTest extends TestBase {
     Contacts before = app.db().contacts();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
-            .withId(modifiedContact.getId()).withLname("ZOTOV09").withFname("VIKTOR09").withNickname("n99");
+            .withId(modifiedContact.getId()).withLname("ZOTOV069").withFname("VIKTOR069").withNickname("n99");
     app.contact().modify(contact);
     assertThat(app.contact().count(), equalTo(before.size()));//проверка количества элементов в группах до и после
     Contacts after = app.db().contacts();
-
-    assertThat(after, equalTo(before.withOut(modifiedContact).withAdded(contact)));//сравнение групп по имени
+    assertThat(after, equalTo(before.withOut(modifiedContact).withAdded(contact)));//сравнение контактов
+    verifyContactListInUI();//для включения необходимо добавить параметр
   }
 
 

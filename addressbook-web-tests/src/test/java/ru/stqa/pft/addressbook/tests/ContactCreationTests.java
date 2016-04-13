@@ -65,6 +65,7 @@ public class ContactCreationTests extends TestBase {
             .withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));//сравнение данных до и после
 
 
+
   }
 
   @Test (enabled = false)
