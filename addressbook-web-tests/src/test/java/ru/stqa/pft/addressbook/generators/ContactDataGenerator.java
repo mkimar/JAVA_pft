@@ -88,7 +88,8 @@ public class ContactDataGenerator {
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i = 0; i < count; i++) {
       contacts.add(new ContactData().withFname(String.format("fname %s", i)).withLname(String.format("lname %s", i))
-              .withAddress(String.format("address %s", i)).withEmail(String.format("email@mail.ru %s", i))
+              .withNickname(String.format("fname %s", i)).withAddress(String.format("address %s", i))
+              .withEmail(String.format("email@mail.ru %s", i))
               .withEmail2(String.format("rew@nik.ru %s", i))
               .withGroup(String.format("TestNULL")));
 

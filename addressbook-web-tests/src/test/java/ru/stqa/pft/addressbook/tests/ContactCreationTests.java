@@ -55,12 +55,12 @@ public class ContactCreationTests extends TestBase {
 
   @Test (dataProvider = "validContactsFromJSON")
   public void testContactCreation(ContactData contact) {
+    Contacts before = app.db().contacts();
     app.contact().contactsPage();
-    Contacts before = app.contact().all();
     app.contact().create(contact, true);
     app.contact().contactsPage();
     assertThat(app.contact().count(), equalTo(before.size() + 1));//сравнение кол-ва элементов до и после
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before
             .withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));//сравнение данных до и после
 

@@ -14,8 +14,8 @@ public class ContactModificationTest extends TestBase {
   @BeforeMethod
 
   public void ensurePreconditions() {
-    app.contact().contactsPage();
-    if (app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
+      app.contact().contactsPage();
       app.contact().create(new ContactData()
               .withLname("S01").withFname("S02").withMname("S03").withNickname("D01").withGroup("TestNULL"), true);
     }
@@ -24,13 +24,13 @@ public class ContactModificationTest extends TestBase {
   @Test //(enabled = false)
 
   public void testContactModification() {
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
-            .withId(modifiedContact.getId()).withLname("ZOTOV06").withFname("VIKTOR302");
+            .withId(modifiedContact.getId()).withLname("ZOTOV05").withFname("VIKTOR05");
     app.contact().modify(contact);
-    assertThat(app.group().count(), equalTo(before.size()));//проверка количества элементов в группах до и после
-    Contacts after = app.contact().all();
+    assertThat(app.contact().count(), equalTo(before.size()));//проверка количества элементов в группах до и после
+    Contacts after = app.db().contacts();
 
     assertThat(after, equalTo(before.withOut(modifiedContact).withAdded(contact)));//сравнение групп по имени
   }
