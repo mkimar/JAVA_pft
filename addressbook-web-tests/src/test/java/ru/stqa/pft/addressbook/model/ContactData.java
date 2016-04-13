@@ -27,7 +27,8 @@ public class ContactData {
   @Column(name = "lastname")
   private String lname;
 
-  @Expose
+  @Transient
+  //@Expose
   @Column(name = "middlename")
   private String mname;
 
@@ -35,42 +36,49 @@ public class ContactData {
   @Column(name = "nickname")
   private String nickname;
 
-  @Expose
+  @Transient
+  //@Expose
   @Column(name = "home")
   @Type(type = "text")
   private String home;
 
-  @Expose
+  @Transient
+  //@Expose
   @Column(name = "mobile")
   @Type(type = "text")
   private String mobile;
 
-  @Expose
+  @Transient
+ // @Expose
   @Column(name = "work")
   @Type(type = "text")
   private String work;
 
-  @Expose
+  @Transient
+  //@Expose
   @Column(name = "address")
   @Type(type = "text")
   private String address;
 
-  @Expose
+  @Transient
+ // @Expose
   @Column(name = "email")
   @Type(type = "text")
   private String email;
 
-  @Expose
+  @Transient
+  //@Expose
   @Column(name = "email2")
   @Type(type = "text")
   private String email2;
 
-  @Expose
+  @Transient
+  //@Expose
   @Column(name = "email3")
   @Type(type = "text")
   private String email3;
 
-  @Expose
+  //@Expose
   @Transient
   private String group;
 
@@ -94,7 +102,7 @@ public class ContactData {
   private String allemails;
   @Transient
   private String allnames;
-  @Expose
+  //@Expose
   @Transient
   private File photo;
 
