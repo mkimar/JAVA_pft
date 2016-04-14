@@ -48,27 +48,25 @@ public class ContactCreationTests extends TestBase {
         line = reader.readLine();
       }
       Gson gson = new Gson();
-      List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>() {}.getType());//List<GroupData>.class
+      List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>() {
+      }.getType());//List<GroupData>.class
       return contacts.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
   }
 
-  @Test (dataProvider = "validContactsFromJSON")
+  @Test(dataProvider = "validContactsFromJSON")
   public void testContactCreation(ContactData contact) {
     Contacts before = app.db().contacts();
-    app.contact().contactsPage();
     app.contact().create(contact, true);
-    app.contact().contactsPage();
     assertThat(app.contact().count(), equalTo(before.size() + 1));//сравнение кол-ва элементов до и после
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before
             .withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));//сравнение данных до и после
 
 
-
   }
 
-  @Test (enabled = false)
+  @Test(enabled = false)
   public void testCurrentDir() {
     File currentDir = new File(".");
     System.out.println(currentDir.getAbsolutePath());
