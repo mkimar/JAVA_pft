@@ -86,10 +86,12 @@ public class ContactHelper extends HelperBase {
   }
 
   public void create(ContactData contactData, boolean creation) {
+    contactsPage();
     newContactCreationPage();
     fillContactForm(contactData, creation);
     submitContactForm();
     contactCache = null;
+    contactsPage();
   }
 
   public void modify(ContactData contact) {
