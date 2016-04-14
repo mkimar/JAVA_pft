@@ -36,10 +36,9 @@ public class ApplicationManager {
   }
 
   public void stop() {
-    if (wd != null) {
+    //if (wd != null) {
       wd.quit();
-    }
-
+    //}
   }
 
   public HttpSession newSession() {
@@ -65,18 +64,19 @@ public class ApplicationManager {
   }
 
   public WebDriver getDriver() {
+    if (wd == null) {
 
-    if (browser.equals(BrowserType.FIREFOX)) {
-      wd = new FirefoxDriver();
-    } else if (browser.equals(BrowserType.CHROME)) {
-      wd = new ChromeDriver();
-    } else if (browser.equals(BrowserType.IE)) {
-      wd = new InternetExplorerDriver();
+      if (browser.equals(BrowserType.FIREFOX)) {
+        wd = new FirefoxDriver();
+      } else if (browser.equals(BrowserType.CHROME)) {
+        wd = new ChromeDriver();
+      } else if (browser.equals(BrowserType.IE)) {
+        wd = new InternetExplorerDriver();
+      }
+      wd.manage().window().maximize();
+      wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+      wd.get(properties.getProperty("web.baseUrl"));
     }
-    wd.manage().window().maximize();
-    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-    wd.get(properties.getProperty("web.baseUrl"));
-
     return wd;
   }
 

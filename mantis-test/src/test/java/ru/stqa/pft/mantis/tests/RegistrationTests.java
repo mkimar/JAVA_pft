@@ -22,15 +22,15 @@ public class RegistrationTests extends TestBase {
 
   @Test
   public void testRegistration() throws IOException, MessagingException {
-
-    String user1 = "user1";
+    long now = System.currentTimeMillis();
+    String user = String.format("user%s", now);
     String password = "password";
-    String email = "user1@localhost.localdomain";
-    app.registration().start(user1, email);
+    String email = String.format("user%s@localhost.localdomain", now);
+    app.registration().start(user, email);
     List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
     String confirmationLink = findConfirmationLink(mailMessages, email);
     app.registration().finish(confirmationLink, password);
-    assertTrue(app.newSession().login(user1,password));
+    assertTrue(app.newSession().login(user,password));
 
   }
 
