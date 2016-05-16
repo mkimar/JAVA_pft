@@ -36,9 +36,9 @@ public class ApplicationManager {
   }
 
   public void stop() {
-    //if (wd != null) {
+    if (wd != null) {
       wd.quit();
-    //}
+    }
   }
 
   public HttpSession newSession() {
